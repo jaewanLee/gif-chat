@@ -1,0 +1,33 @@
+doctype
+
+html
+    head
+        meta(charset="utf-8")
+        title GIF chat room
+
+
+    body
+        div press F12 and check console & network tap
+            //socket js파일 다운받음
+        script(src="/socket.io/socket.io.js")
+
+        script.
+            var socket=io.connect("http://localhost:8005",{
+                path:"/socket.io",
+                transports:["websocket"]
+            });
+            socket.on("news",function(data) {
+                console.log(data);
+                socket.emit("reply", "hello Node.js");
+            });
+
+        //script.
+        //    var webSocket = new WebSocket("ws://localhost:8005");
+        //    webSocket.onopen = function () {
+        //        console.log("sucess");
+        //    }
+        //    webSocket.onmessage = function (event) {
+        //        console.log(event.data);
+        //        webSocket.send("client send reply to server");
+        //    }
+
